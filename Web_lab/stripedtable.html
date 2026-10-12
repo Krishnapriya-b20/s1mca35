@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>striped table</title>
+<style>
+#details{
+width:100%;
+max-width:500px;
+border-collapse:collapse;
+font-family:sans-serif;
+}
+#details th,#details td{
+padding:12px;
+text-align:left;
+border:1px solid #ccc;
+}
+#details th{
+padding:10px;
+text-align:left;
+background-color:#0056b3;
+}
+
+#details tr:nth-child(even){
+background-color:#f0f0f0;
+}
+#details tr:hover{
+background-color:#ffffcc;
+}
+</style>
+<body>
+<table id="details">
+<tr>
+<th>Name</th>
+<th>Mark</th>
+<th>Result</th>
+</tr>
+<tr>
+<td>Anu</td>
+<td>70</td>
+<td>pass</td>
+</tr>
+<tr>
+<td>Arun</td>
+<td>90</td>
+<td>pass</td>
+</tr>
+<tr>
+<td>Arun</td>
+<td>60</td>
+<td>Fail</td>
+</table>
+</body>
+</html>
+
