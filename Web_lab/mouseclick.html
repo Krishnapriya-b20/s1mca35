@@ -1,0 +1,34 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mouse Click</title>
+</head>
+<body>
+
+<h2>MOUSE CLICK EVENT</h2>
+
+<button id="colorBtn">Click Me</button>
+
+<script>
+const btn = document.getElementById("colorBtn");
+
+
+btn.addEventListener("click", function() {
+    document.body.style.backgroundColor = "red";
+});
+
+btn.addEventListener("dblclick", function() {
+    document.body.style.backgroundColor = "green";
+});
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
