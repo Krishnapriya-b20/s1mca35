@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Online Examination</title>
+<style>
+body {  
+font-family: Arial;
+background-color: lightblue;
+padding: 20px;
+ }
+
+.exam {
+background-color: white;
+padding: 20px;
+width: 70%;
+margin: auto;
+border-radius: 10px;
+}
+
+h1 {
+text-align: center;
+color: blue;
+}
+
+button {
+background-color: green;
+color: white;
+padding: 10px 20px;
+border: none;
+cursor: pointer;
+}
+</style>
+</head>
+<body>
+
+<div class="exam">
+
+<h1>Online Examination</h1>
+
+<label>Enter Student Name:</label>
+<input type="text" id="name">
+
+<h3>Time: <span id="timer">05:00</span></h3>
+
+<hr>
+
+<form id="quiz">
+
+<p>1. Which language is used to create web pages?</p>
+<input type="radio" name="q1" value="HTML"> HTML<br>
+<input type="radio" name="q1" value="Java"> Java<br>
+<input type="radio" name="q1" value="Python"> Python<br>
+
+<p>2. Which language is used for web page interactivity?</p>
+<input type="radio" name="q2" value="CSS"> CSS<br>
+<input type="radio" name="q2" value="JavaScript"> JavaScript<br>
+ <input type="radio" name="q2" value="SQL"> SQL<br>
+
+<p>3. Which tag is used to create a hyperlink?</p>
+<input type="radio" name="q3" value="p"> &lt;p&gt;<br>
+<input type="radio" name="q3" value="a"> &lt;a&gt;<br>
+<input type="radio" name="q3" value="h1"> &lt;h1&gt;<br>
+<br>
+<button type="button" onclick="submitExam()">Submit Exam</button>
+</form>
+<h2 id="result"></h2>
+</div>
+<script>
+let time = 300;
+let countdown = setInterval(function() {
+let minutes = Math.floor(time / 60);
+let seconds = time % 60;
+document.getElementById("timer").innerHTML =
+            minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+
+        time--;
+
+        if (time < 0) {
+            clearInterval(countdown);
+            submitExam();
+        }
+
+    }, 1000);
+
+
+    function submitExam() {
+
+        clearInterval(countdown);
+
+        let name = document.getElementById("name").value;
+
+        if (name.trim() === "") {
+            name = "Student";
+        }
+
+        let score = 0;
+
+        let answers = {
+            q1: "HTML",
+            q2: "JavaScript",
+            q3: "a"
+        };
+
+        for (let question in answers) {
+
+            let selected = document.querySelector(
+                'input[name="' + question + '"]:checked'
+            );
+
+            if (selected && selected.value === answers[question]) {
+                score++;
+            }
+        }
+
+        document.getElementById("result").innerHTML =
+            "Student Name: " + name +
+            "<br>Your Score: " + score + " / 3";
+            
+        document.getElementById("quiz").style.display = "none";
+    }
+
+</script>
+
+</body>
+</html>
